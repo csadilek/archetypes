@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jboss.errai.archetypes</groupId>
-    <artifactId>cdi-quickstart</artifactId>
+    <artifactId>archetypes-parent</artifactId>
     <version>1.3.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>Errai CDI Quickstart Archetype</name>
+    <modules>
+        <module>bus-quickstart</module>
+        <module>cdi-quickstart</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:git@github.com:errai/archetypes.git</connection>
+        <developerConnection>scm:git:git@github.com:errai/archetypes.git</developerConnection>
+        <url>scm:git:git@github.com:errai/archetypes.git</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>jboss-releases-repository</id>
+            <name>JBoss Releases Repository</name>
+            <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>jboss-snapshots-repository</id>
+            <name>JBoss Snapshots Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <properties>
+        <errai.target.version>${project.version}</errai.target.version>
+    </properties>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
         <extensions>
             <extension>
                 <groupId>org.apache.maven.archetype</groupId>
@@ -45,25 +80,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <scm>
-        <connection>scm:git:git@github.com:errai/archetypes.git</connection>
-        <developerConnection>scm:git:git@github.com:errai/archetypes.git</developerConnection>
-        <url>scm:git:git@github.com:errai/archetypes.git</url>
-    </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>jboss-releases-repository</id>
-            <name>JBoss Releases Repository</name>
-            <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>jboss-snapshots-repository</id>
-            <name>JBoss Snapshots Repository</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-
-    </distributionManagement>
 </project>
