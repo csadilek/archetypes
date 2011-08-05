@@ -204,9 +204,6 @@
 					<warSourceDirectory>war</warSourceDirectory>
 					<extraJvmArgs>-Xmx512m</extraJvmArgs>
 					<treeLogger>true</treeLogger>
-					<gen>${project.build.directory}/generated</gen>
-					<generateDirectory>${project.build.directory}/generated</generateDirectory>
-					<soyc>false</soyc>
 					<hostedWebapp>war</hostedWebapp>
 				</configuration>
 				<executions>
