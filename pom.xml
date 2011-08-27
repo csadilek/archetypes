@@ -7,6 +7,8 @@
     <version>1.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <name>Errai Archetypes</name>
+
     <url>http://jboss.org/errai/errai</url>
 
     <licenses>
