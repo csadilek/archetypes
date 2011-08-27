@@ -17,6 +17,38 @@
     <packaging>war</packaging>
     <version>${version}</version>
 
+    <url>http://jboss.org/errai/errai</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <description>
+        A GWT framework
+    </description>
+
+    <developers>
+        <developer>
+            <name>Mike Brock</name>
+        </developer>
+        <developer>
+            <name>Christian Sadilek</name>
+        </developer>
+        <developer>
+            <name>Heiko Braun</name>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>JBoss, a division of Red Hat</name>
+        <url>http://www.jboss.org</url>
+    </organization>
+
+
     <properties>
         <errai.version>${errai.target.version}</errai.version>
         <gwt.version>2.3.0</gwt.version>
