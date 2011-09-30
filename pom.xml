@@ -1,120 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.jboss.errai.archetypes</groupId>
-    <artifactId>archetypes-parent</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+	<groupId>org.jboss.errai.archetypes</groupId>
+	<artifactId>archetypes-parent</artifactId>
+	<version>1.3.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-    <name>Errai Archetypes</name>
+	<name>Errai Archetypes</name>
 
-    <url>http://jboss.org/errai/errai</url>
+	<url>http://jboss.org/errai/errai</url>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-    <description>
+	<description>
         A GWT framework
     </description>
 
-    <developers>
-        <developer>
-            <name>Mike Brock</name>
-        </developer>
-        <developer>
-            <name>Christian Sadilek</name>
-        </developer>
-        <developer>
-            <name>Heiko Braun</name>
-        </developer>
-    </developers>
+	<developers>
+		<developer>
+			<name>Mike Brock</name>
+		</developer>
+		<developer>
+			<name>Christian Sadilek</name>
+		</developer>
+		<developer>
+			<name>Heiko Braun</name>
+		</developer>
+	</developers>
 
-    <organization>
-        <name>JBoss, a division of Red Hat</name>
-        <url>http://www.jboss.org</url>
-    </organization>
+	<organization>
+		<name>JBoss, a division of Red Hat</name>
+		<url>http://www.jboss.org</url>
+	</organization>
 
-    <!-- IssueManagement -->
-    <issueManagement>
-        <system>jira</system>
-        <url>http://jira.jboss.org/jira/browse/ERRAI</url>
-    </issueManagement>
+	<!-- IssueManagement -->
+	<issueManagement>
+		<system>jira</system>
+		<url>http://jira.jboss.org/jira/browse/ERRAI</url>
+	</issueManagement>
 
-    <modules>
-        <module>bus-quickstart</module>
-        <module>cdi-quickstart</module>
-    </modules>
+	<modules>
+		<module>bus-quickstart</module>
+		<module>cdi-quickstart</module>
+	</modules>
 
-    <scm>
-        <connection>scm:git:git@github.com:errai/archetypes.git</connection>
-        <developerConnection>scm:git:git@github.com:errai/archetypes.git</developerConnection>
-        <url>scm:git:git@github.com:errai/archetypes.git</url>
-    </scm>
+	<scm>
+		<connection>scm:git:git@github.com:errai/archetypes.git</connection>
+		<developerConnection>scm:git:git@github.com:errai/archetypes.git</developerConnection>
+		<url>scm:git:git@github.com:errai/archetypes.git</url>
+	</scm>
 
-    <distributionManagement>
-        <repository>
-            <id>jboss-releases-repository</id>
-            <name>JBoss Releases Repository</name>
-            <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
-        </repository>
+	<distributionManagement>
+		<repository>
+			<id>jboss-releases-repository</id>
+			<name>JBoss Releases Repository</name>
+			<url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
+		</repository>
 
-        <snapshotRepository>
-            <id>jboss-snapshots-repository</id>
-            <name>JBoss Snapshots Repository</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+		<snapshotRepository>
+			<id>jboss-snapshots-repository</id>
+			<name>JBoss Snapshots Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
-    <properties>
-        <errai.target.version>${project.version}</errai.target.version>
-    </properties>
+	<properties>
+		<errai.target.version>${project.version}</errai.target.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/pom.xml</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.archetype</groupId>
-                <artifactId>archetype-packaging</artifactId>
-                <version>2.0-alpha-5</version>
-            </extension>
-        </extensions>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+			</extension>
+		</extensions>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-archetype-plugin</artifactId>
-                    <version>2.0-alpha-5</version>
-                    <extensions>true</extensions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.0-beta-9</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-scm-plugin</artifactId>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.apache.maven.scm</groupId>
-                            <artifactId>maven-scm-provider-gitexe</artifactId>
-                            <version>1.1-SNAPSHOT</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<extensions>true</extensions>
+					<version>2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>1.5</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-provider-gitexe</artifactId>
+							<version>1.1-SNAPSHOT</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<escapeString>\</escapeString>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
