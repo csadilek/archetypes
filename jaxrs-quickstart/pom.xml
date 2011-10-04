@@ -20,6 +20,5 @@
 	<groupId>org.jboss.errai.archetypes</groupId>
 	<artifactId>jaxrs-quickstart</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
 	<name>Errai JAX-RS Quickstart Archetype</name>
 </project>
