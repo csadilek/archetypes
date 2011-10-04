@@ -42,7 +42,7 @@
 
 	<properties>
 		<errai.version>${errai.target.version}</errai.version>
-		<errai.jaxrs.version>1.0.0-SNAPSHOT</errai.jaxrs.version>
+		<errai.jaxrs.version>${errai.target.version}</errai.jaxrs.version>
 		<gwt.version>2.3.0</gwt.version>
 		<gwt.maven.version>2.3.0</gwt.maven.version>
 		<webXmlPath>src/jetty/web.xml</webXmlPath>
@@ -115,9 +115,12 @@
 			<version>\${gwt.version}</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-dev</artifactId> 
-			<scope>provided</scope> <version>\${gwt.version}</version> </dependency> -->
-
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>provided</scope>
+			<version>\${gwt.version}</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>
