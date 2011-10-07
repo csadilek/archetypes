@@ -79,6 +79,7 @@
 			<groupId>org.jboss.errai</groupId>
 			<artifactId>errai-jaxrs-client</artifactId>
 			<version>${errai.jaxrs.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
