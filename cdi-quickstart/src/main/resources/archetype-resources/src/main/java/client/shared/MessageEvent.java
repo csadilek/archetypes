@@ -1,11 +1,11 @@
 package ${package}.client.shared;
 
-import org.jboss.errai.bus.server.annotations.ExposeEntity;
+import org.jboss.errai.common.client.api.annotations.Portable;
 
 /**
  * Generated.
  */
-@ExposeEntity
+@Portable
 public class MessageEvent {
     private int id;
     private String message;

@@ -74,6 +74,7 @@
 	</distributionManagement>
 
 	<properties>
+	    <!-- Specifies which version of Errai the generated project will depend on. See readme.txt for details -->
 		<errai.target.version>${project.version}</errai.target.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
