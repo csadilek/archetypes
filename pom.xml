@@ -50,7 +50,6 @@
 	<modules>
 		<module>bus-quickstart</module>
 		<module>cdi-quickstart</module>
-                <module>jaxrs-quickstart</module>
 	</modules>
 
 	<scm>
