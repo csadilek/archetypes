@@ -8,7 +8,6 @@
 		<version>2.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.jboss.errai.archetypes</groupId>
 	<artifactId>cdi-quickstart</artifactId>
 	<packaging>jar</packaging>
 
