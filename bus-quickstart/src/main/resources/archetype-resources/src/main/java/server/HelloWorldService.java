@@ -2,7 +2,7 @@
     #set($symbol_dollar='$')
     #set($symbol_escape='\' )
 /*
- * Copyright 2009 JBoss, a divison Red Hat, Inc
+ * Copyright 2009 JBoss, a division of Red Hat Hat, Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
