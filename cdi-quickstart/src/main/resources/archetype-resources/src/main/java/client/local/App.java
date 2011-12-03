@@ -30,27 +30,29 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-import ${package}.client.shared.MessageEvent;
-import ${package}.client.shared.ResponseEvent;
+import ${package}.client.shared.HelloMessage;
+import ${package}.client.shared.Response;
 
 /**
  * Main application entry point.
  */
 @EntryPoint
 public class App {
+
     @Inject
-    private Event<MessageEvent> messageEvent;
+    private Event<HelloMessage> messageEvent;
 
     private final Label responseLabel = new Label();
+    private final Button button = new Button("Send");
+    private final TextBox message = new TextBox();
 
     @PostConstruct
     public void buildUI() {
-        final Button button = new Button("Send");
-        final TextBox message = new TextBox();
 
         button.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                messageEvent.fire(new MessageEvent(message.getText()));
+                System.out.println("Handling click event!");
+                fireMessage();
             }
         });
 
@@ -60,9 +62,42 @@ public class App {
         horizontalPanel.add(responseLabel);
 
         RootPanel.get().add(horizontalPanel);
+        
+        System.out.println("UI Constructed!");
     }
 
-    public void response(@Observes ResponseEvent event) {
-        responseLabel.setText("Message from Server: " + event.getMessage().toUpperCase());
+    /**
+     * Fires a CDI HelloMessage with the current contents of the message textbox.
+     */
+    void fireMessage() {
+      String text = message.getText();
+      HelloMessage event = new HelloMessage(text);
+      messageEvent.fire(event);
+    }
+
+    public void response(@Observes Response event) {
+        System.out.println("Got a Response!");
+        responseLabel.setText("HelloMessage from Server: " + event.getMessage().toUpperCase());
+    }
+
+    /**
+     * Returns the "Send" button. Exposed for testing.
+     */
+    Button getSendButton() {
+        return button;
+    }
+    
+    /**
+     * Returns the response label. Exposed for testing.
+     */
+    Label getResponseLabel() {
+      return responseLabel;
+    }
+    
+    /**
+     * Returns the "message" text box. Exposed for testing.
+     */
+    TextBox getMessageBox() {
+      return message;
     }
 }

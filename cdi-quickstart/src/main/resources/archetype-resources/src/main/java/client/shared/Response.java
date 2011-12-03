@@ -6,14 +6,14 @@ import org.jboss.errai.bus.server.annotations.ExposeEntity;
  * Generated.
  */
 @ExposeEntity
-public class ResponseEvent {
+public class Response {
     private int id;
     private String message;
 
-    public ResponseEvent() {
+    public Response() {
     }
 
-    public ResponseEvent(String message) {
+    public Response(String message) {
         this.message = message;
     }
 

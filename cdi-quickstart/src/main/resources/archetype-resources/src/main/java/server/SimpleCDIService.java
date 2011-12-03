@@ -15,8 +15,8 @@
  */
 package ${package}.server;
 
-import ${package}.client.shared.MessageEvent;
-import ${package}.client.shared.ResponseEvent;
+import ${package}.client.shared.HelloMessage;
+import ${package}.client.shared.Response;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -28,11 +28,11 @@ import javax.inject.Inject;
  */
 @ApplicationScoped
 public class SimpleCDIService {
-    @Inject
-    private Event<ResponseEvent> responseEvent;
+  @Inject
+  private Event<Response> responseEvent;
 
-    public void handleMessage(@Observes MessageEvent event) {
-        System.out.println("Received Message from Client: " + event.getMessage());
-        responseEvent.fire(new ResponseEvent(event.getMessage() + " @ timemillis: " + System.currentTimeMillis()));
-    }
+  public void handleMessage(@Observes HelloMessage event) {
+    System.out.println("Received HelloMessage from Client: " + event.getMessage());
+    responseEvent.fire(new Response(event.getMessage() + " @ timemillis: " + System.currentTimeMillis()));
+  }
 }
