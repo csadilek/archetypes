@@ -3,17 +3,20 @@ package ${package}.client.shared;
 import org.jboss.errai.common.client.api.annotations.Portable;
 
 /**
- * Generated.
+ * A marshallable bean that's used as the event object when sending
+ * user-entered text from the client to the server.
+ * 
+ * @author Jonathan Fuerth <jfuerth@gmail.com>
  */
 @Portable
-public class MessageEvent {
+public class HelloMessage {
     private int id;
     private String message;
 
-    public MessageEvent() {
+    public HelloMessage() {
     }
 
-    public MessageEvent(String message) {
+    public HelloMessage(String message) {
         this.message = message;
     }
 
