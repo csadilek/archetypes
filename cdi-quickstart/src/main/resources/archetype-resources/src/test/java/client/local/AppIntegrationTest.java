@@ -43,9 +43,9 @@ public class AppIntegrationTest extends AbstractErraiCDITest {
       }
     });
     
-    // This call tells GWT's test runner to wait 3000ms after the test returns.
+    // This call tells GWT's test runner to wait 20 seconds after the test returns.
     // We need this delay to give the HelloMessage time to come back from the server.
-    delayTestFinish(3000);
+    delayTestFinish(20000);
   }
 
   public void testButtonClickUpdatesLabel() throws Exception {
