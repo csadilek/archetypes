@@ -1,6 +1,3 @@
-#set($symbol_pound='#')
-    #set($symbol_dollar='$')
-    #set($symbol_escape='\' )
 /*
  * Copyright 2009 JBoss, a divison Red Hat, Inc
  *
@@ -18,6 +15,8 @@
  */
 package ${package}.server;
 
+import java.util.Date;
+
 import org.jboss.errai.bus.client.api.Message;
 import org.jboss.errai.bus.client.api.MessageCallback;
 import org.jboss.errai.bus.client.api.base.MessageBuilder;
@@ -29,7 +28,7 @@ public class HelloWorldService implements MessageCallback {
   public void callback(Message message) {
     MessageBuilder.createConversation(message)
       .subjectProvided()
-      .withValue("Hello, World!")
+      .withValue("Hello, World! The server's time is now " + new Date() + ".")
       .done().reply();
   }
 }
