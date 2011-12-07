@@ -7,9 +7,14 @@
         <version>1.3.2-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.jboss.errai.archetypes</groupId>
     <artifactId>cdi-quickstart</artifactId>
     <packaging>jar</packaging>
 
     <name>Errai CDI Quickstart Archetype</name>
+
+    <properties>
+        <errai.cdi.target.version>${errai.target.version}</errai.cdi.target.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
 </project>
