@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jboss.errai.archetypes</groupId>
         <artifactId>archetypes-parent</artifactId>
-        <version>1.3.2-SNAPSHOT</version>
+        <version>1.3.2.Final</version>
     </parent>
 
     <artifactId>cdi-quickstart</artifactId>
