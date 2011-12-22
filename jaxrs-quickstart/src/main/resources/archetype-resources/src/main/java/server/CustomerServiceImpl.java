@@ -1,6 +1,3 @@
-#set($symbol_pound='#')
-    #set($symbol_dollar='$')
-    #set($symbol_escape='\' )
 /*
  * Copyright 2011 JBoss, a division of Red Hat, Inc
  *

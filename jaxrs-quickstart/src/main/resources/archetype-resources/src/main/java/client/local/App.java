@@ -26,7 +26,6 @@ import javax.inject.Inject;
 import org.jboss.errai.bus.client.api.Caller;
 import org.jboss.errai.bus.client.api.RemoteCallback;
 import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
-import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 
 import ${package}.client.shared.Customer;
@@ -46,15 +45,15 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * Example code showing how to use Errai-JAXRS.
- *  
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 @EntryPoint
 public class App {
-  
+
   @Inject
   private Caller<CustomerService> customerService;
-  
+
   final private FlexTable customersTable = new FlexTable();
   final private TextBox custFirstName = new TextBox();
   final private TextBox custLastName = new TextBox();
@@ -63,8 +62,10 @@ public class App {
   final Map<Long, Integer> rows = new HashMap<Long, Integer>();
 
   final RemoteCallback<Long> creationCallback = new RemoteCallback<Long>() {
+    @Override
     public void callback(Long id) {
       customerService.call(new RemoteCallback<Customer>() {
+        @Override
         public void callback(Customer customer) {
           addCustomerToTable(customer, customersTable.getRowCount() + 1);
         }
@@ -74,12 +75,14 @@ public class App {
   };
 
   final RemoteCallback<Customer> modificationCallback = new RemoteCallback<Customer>() {
+    @Override
     public void callback(Customer customer) {
       addCustomerToTable(customer, rows.get(customer.getId()));
     }
   };
 
   final ResponseCallback deletionCallback = new ResponseCallback() {
+    @Override
     public void callback(Response response) {
       if (response.getStatusCode() == Response.SC_NO_CONTENT) {
         customersTable.removeAllRows();
@@ -93,6 +96,7 @@ public class App {
   @PostConstruct
   public void init() {
     final Button create = new Button("Create", new ClickHandler() {
+      @Override
       public void onClick(ClickEvent clickEvent) {
         Customer customer = new Customer(custFirstName.getText(), custLastName.getText(), custPostalCode.getText());
         customerService.call(creationCallback).createCustomer(customer);
@@ -115,7 +119,7 @@ public class App {
     populateCustomersTable();
   }
 
-  private void populateCustomersTable() {
+  void populateCustomersTable() {
     customersTable.setText(0, 0, "ID");
     customersTable.setText(0, 1, "First Name");
     customersTable.setText(0, 2, "Last Name");
@@ -123,6 +127,7 @@ public class App {
     customersTable.setText(0, 4, "Date Changed");
 
     final RemoteCallback<List<Customer>> listCallback = new RemoteCallback<List<Customer>>() {
+      @Override
       public void callback(List<Customer> customers) {
         for (final Customer customer : customers) {
           addCustomerToTable(customer, customersTable.getRowCount() + 1);
@@ -132,7 +137,7 @@ public class App {
     customerService.call(listCallback).listAllCustomers();
   }
 
-  private void addCustomerToTable(final Customer customer, int row) {
+  void addCustomerToTable(final Customer customer, int row) {
     final TextBox firstName = new TextBox();
     firstName.setText(customer.getFirstName());
 
@@ -143,6 +148,7 @@ public class App {
     postalCode.setText(customer.getPostalCode());
 
     final Button update = new Button("Update", new ClickHandler() {
+      @Override
       public void onClick(ClickEvent clickEvent) {
         customer.setFirstName(firstName.getText());
         customer.setLastName(lastName.getText());
@@ -152,6 +158,7 @@ public class App {
     });
 
     Button delete = new Button("Delete", new ClickHandler() {
+      @Override
       public void onClick(ClickEvent clickEvent) {
         customerService.call(deletionCallback).deleteCustomer(customer.getId());
       }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  ~ Copyright 2009 JBoss, a divison Red Hat, Inc 
+  ~ Copyright 2011 JBoss, a divison Red Hat, Inc
   ~ 
   ~ Licensed under the Apache License, Version 2.0 (the "License"); 
   ~ you may not use this file except in compliance with the License. 
@@ -90,14 +90,14 @@
         <dependency>
             <groupId>org.jboss.errai</groupId>
             <artifactId>errai-jaxrs-client</artifactId>
-            <version>${errai.jaxrs.version}</version>
+            <version>\${errai.jaxrs.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.errai</groupId>
             <artifactId>errai-jaxrs-provider</artifactId>
-            <version>${errai.jaxrs.version}</version>
+            <version>\${errai.jaxrs.version}</version>
         </dependency>
 
         <dependency>
@@ -145,17 +145,23 @@
 
             <dependencies>
                 <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-bus</artifactId>
-                    <version>\${errai.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <artifactId>xml-apis</artifactId>
-                            <groupId>xml-apis</groupId>
-                        </exclusion>
-                    </exclusions>
+                  <groupId>org.jboss.errai</groupId>
+                  <artifactId>errai-bus</artifactId>
+                  <version>\${errai.version}</version>
                 </dependency>
-                
+
+                <dependency>
+                  <groupId>org.jboss.errai</groupId>
+                  <artifactId>errai-common</artifactId>
+                  <version>\${errai.version}</version>
+                  <exclusions>
+                    <exclusion>
+                      <artifactId>xml-apis</artifactId>
+                      <groupId>xml-apis</groupId>
+                    </exclusion>
+                  </exclusions>
+                </dependency>
+
                 <dependency>
                     <groupId>org.jboss.errai</groupId>
                     <artifactId>errai-ioc</artifactId>
@@ -458,7 +464,7 @@
                                 <phase>process-test-resources</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jboss/web.xml" toDir="war/WEB-INF" overwrite="true" />
+                                        <copy file="src/testwebxml/web.xml" toDir="war/WEB-INF" overwrite="true" />
                                     </tasks>
                                 </configuration>
                                 <goals>
@@ -467,111 +473,32 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.jboss.errai</groupId>
+                        <artifactId>jacoco-gwt-maven-plugin</artifactId>
+                        <version>0.5.4-SNAPSHOT</version>
+                        <configuration>
+                            <append>false</append>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>jacoco-gwt-prepare-agent</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>jacoco-gwt-report</id>
+                                <phase>site</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
-
-            <dependencies>
-                <dependency>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                    <version>2.5</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>jsp-api</artifactId>
-                    <version>2.0</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                    <version>1.2.16</version>
-                </dependency>
-                <dependency>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                    <version>4.8.1</version>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.ejb3</groupId>
-                    <artifactId>jboss-ejb3-api</artifactId>
-                    <scope>provided</scope>
-                    <version>3.1.0</version>
-                </dependency>
-
-                <!-- Errai Core -->
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-bus</artifactId>
-                    <version>\${errai.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-ioc</artifactId>
-                    <version>\${errai.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>javax.inject</groupId>
-                            <artifactId>javax.inject</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>javax.annotation</groupId>
-                            <artifactId>jsr250-api</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-tools</artifactId>
-                    <version>\${errai.version}</version>
-                </dependency>
-
-                <!-- GWT and GWT Extensions -->
-                <dependency>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-user</artifactId>
-                    <version>\${gwt.version}</version>
-                    <scope>compile</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-dev</artifactId>
-                    <version>\${gwt.version}</version>
-                    <scope>compile</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                    <version>1.0.0.GA</version>
-                    <scope>compile</scope>
-                </dependency>
-
-                <!-- Runtime / Container dependencies -->
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                    <version>\${slf4j.version}</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss</groupId>
-                    <artifactId>jboss-common-core</artifactId>
-                    <version>2.2.14.GA</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-javax-enterprise</artifactId>
-                    <version>\${errai.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-
-            </dependencies>
         </profile>
     </profiles>
 
@@ -624,38 +551,32 @@
                     <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.2</version>
-                <executions>
-                    <execution>
-                        <id>clean.war</id>
-                        <phase>clean</phase>
-                        <configuration>
-                            <tasks>
-                                <!-- The gwt-maven-plugin use the war source folder as it's build 
-                                    directory. We need to cleanup after we'd run the plugin and remove all GWT 
-                                    related artifacts that are required to run the hosted mode. -->
-                                <delete dir="war/WEB-INF/classes" />
-                                <delete dir="war/WEB-INF/lib" />
-                                <delete dir="war/App" />
-                                <delete dir="target" />
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
+              <artifactId>maven-clean-plugin</artifactId>
+              <version>2.4.1</version>
+              <configuration>
+                <filesets>
+                  <fileset>
+                    <directory>war</directory>
+                    <includes>
+                      <include>WEB-INF/classes/**</include>
+                      <include>WEB-INF/lib/**</include>
+                      <include>WEB-INF/deploy/**</include>
+                      <include>*.JUnit/**</include>
+                    </includes>
+                    <followSymlinks>false</followSymlinks>
+                  </fileset>
+                  <fileset>
+                    <directory>target</directory>
+                    <followSymlinks>false</followSymlinks>
+                  </fileset>
+                  <fileset>
+                    <directory>.errai</directory>
+                    <followSymlinks>false</followSymlinks>
+                  </fileset>
+                </filesets>
+              </configuration>
             </plugin>
 
             <!-- Tests are skipped by default because they require additional GWT dependencies.
