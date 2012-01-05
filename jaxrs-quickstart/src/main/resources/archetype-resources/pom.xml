@@ -555,6 +555,7 @@
                 <include>WEB-INF/classes/**</include>
                 <include>WEB-INF/lib/**</include>
                 <include>WEB-INF/deploy/**</include>
+                <include>App/**</include>
                 <include>*.JUnit/**</include>
               </includes>
               <followSymlinks>false</followSymlinks>
