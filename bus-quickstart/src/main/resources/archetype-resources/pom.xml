@@ -110,7 +110,7 @@
                             <groupId>javax.annotation</groupId>
                         </exclusion>
                     </exclusions>
-                    <scope>provided</scope>
+                    <scope>compile</scope>
                     <version>\${errai.version}</version>
                 </dependency>
 
@@ -157,7 +157,7 @@
                             <groupId>javax.inject</groupId>
                         </exclusion>
                     </exclusions>
-                    <scope>provided</scope>
+                    <scope>compile</scope>
                     <version>\${errai.version}</version>
                 </dependency>
 
