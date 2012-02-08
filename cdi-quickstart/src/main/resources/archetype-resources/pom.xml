@@ -721,6 +721,7 @@
 
                     <delete file="war/WEB-INF/jetty-env.xml" />
                     <delete file="war/WEB-INF/classes/jndi.properties" />
+					<delete file="src/main/resources/jndi.properties" />
                   </tasks>
                 </configuration>
                 <goals>
