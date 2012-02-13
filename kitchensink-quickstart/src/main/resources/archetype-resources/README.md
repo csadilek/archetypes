@@ -16,6 +16,11 @@ Errai features such as client-side CDI, Errai RPC, and server-to-client eventing
 Further, this project showcases several modern GWT technologies such as UiBinder,
 CellTable, and SafeHtml.
 
+Unlike the other Errai quickstart projects, this project is only supported for use
+on JBoss AS 7. Although you could get it to work on any Java web server, we do
+not provide profiles in the POM to help you with that.
+
+
 System requirements
 -------------------
 
@@ -27,8 +32,8 @@ The following instructions target JBoss AS 7, but they also apply to JBoss Enter
  
 With the prerequisites out of the way, you're ready to build and deploy.
 
-Deploying the application
--------------------------
+Deploying the application (command line)
+----------------------------------------
  
 First you need to start JBoss AS 7 (or JBoss Enterprise Application Platform 6). To do this, run
   
@@ -58,21 +63,6 @@ To undeploy from JBoss AS, run this command:
 You can also start JBoss AS 7 and deploy the project using Eclipse. See the JBoss AS 7
 <a href="https://docs.jboss.org/author/display/AS71/Getting+Started+Developing+Applications+Guide" title="Getting Started Developing Applications Guide">Getting Started Developing Applications Guide</a> for more information.
 
-Importing the project into an IDE
-=================================
-
-If you created the project using the Maven archetype wizard in your IDE
-(Eclipse, NetBeans or IntelliJ IDEA), then there is nothing to do. You should
-already have an IDE project.
-
-Detailed instructions for using Eclipse with JBoss AS 7 are provided in the 
-JBoss AS 7 <a href="https://docs.jboss.org/author/display/AS71/Getting+Started+Developing+Applications+Guide" title="Getting Started Developing Applications Guide">Getting Started Developing Applications Guide</a>.
-
-If you created the project from the commandline using archetype:generate, then
-you need to import the project into your IDE. If you are using NetBeans 6.8 or
-IntelliJ IDEA 9, then all you have to do is open the project as an existing
-project. Both of these IDEs recognize Maven projects natively.
-
 Running the Application in GWT Dev Mode
 =======================================
 
@@ -85,6 +75,42 @@ Deploy the war file and start JBoss AS 7 as described above.
 Then execute the command:
 
     mvn gwt:run
+
+Running the Application in JBoss Developer Studio or Eclipse with JBoss Tools
+=============================================================================
+
+We assume you already have the project in your workspace because it was created from
+the Maven archetype within your IDE.
+
+To run the project and try it out, right-click on the project node in the Package
+Explorer and select Run As > Run On Server from the popup menu. Choose the newest
+available JBoss AS server in the dialog that appears.
+
+If you want to make changes to client-side code, we strongly recommend that you
+take advantage of GWT Dev Mode. Follow these steps:
+
+1. Deploy to JBoss AS (as in the above paragraph)
+2. Right-click the project in the Package Explorer
+3. From the popup menu, choose Run As > Web Application (running on external server)
+4. In the dialog that appears:
+   * Ensure External Server Root is set to http://localhost:8080/<your application name>
+   * Ensure Select an HTML page is checked
+   * Select KitchenSink.html from the Matching Items list
+
+Importing the project into another IDE
+======================================
+
+If you created the project using the Maven archetype wizard in your IDE
+(Eclipse, NetBeans or IntelliJ IDEA), then there is nothing to do. You should
+already have an IDE project.
+
+Detailed instructions for using Eclipse with JBoss AS 7 are provided in the 
+JBoss AS 7 <a href="https://docs.jboss.org/author/display/AS71/Getting+Started+Developing+Applications+Guide" title="Getting Started Developing Applications Guide">Getting Started Developing Applications Guide</a>.
+
+If you created the project from the commandline using archetype:generate, then
+you need to import the project into your IDE. If you are using NetBeans 6.8 or
+IntelliJ IDEA 9, then all you have to do is open the project as an existing
+project. Both of these IDEs recognize Maven projects natively.
 
 Downloading the sources and Javadocs
 ====================================
