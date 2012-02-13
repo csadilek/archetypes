@@ -51,6 +51,7 @@
 		<module>bus-quickstart</module>
 		<module>cdi-quickstart</module>
 		<module>jaxrs-quickstart</module>
+		<module>kitchensink-quickstart</module>
 	</modules>
 
 	<scm>
