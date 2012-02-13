@@ -222,6 +222,8 @@
                       overwrite="true" />
                     <copy file="src/jetty/jetty-env.xml" toDir="war/WEB-INF"
                       overwrite="true" />
+                    <copy file="src/jetty/jndi.properties" toDir="war/WEB-INF/classes/"
+                          overwrite="true" />
                   </tasks>
                 </configuration>
                 <goals>
