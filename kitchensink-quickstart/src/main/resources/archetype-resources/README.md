@@ -1,5 +1,5 @@
-kitchensink: Example Using Multiple Java EE 6 Technologies Deployed as a WAR
-============================================================================
+kitchensink: Example Using Errai with Multiple Java EE 6 Technologies
+=====================================================================
 Author: Christian Sadilek and Jonathan Fuerth, based on Pete Muir's JSF Kitchen Sink demo
 
 What is it?
@@ -96,6 +96,8 @@ take advantage of GWT Dev Mode. Follow these steps:
    * Ensure External Server Root is set to http://localhost:8080/<your application name>
    * Ensure Select an HTML page is checked
    * Select KitchenSink.html from the Matching Items list
+5. The launch may fail the first time. If so, go to Run > Run Configurations > GWT tab
+   > add module and add the KitchenSink module to the run configuration
 
 Importing the project into another IDE
 ======================================
