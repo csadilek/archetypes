@@ -468,7 +468,7 @@
           <plugin>
             <groupId>org.jboss.errai</groupId>
             <artifactId>jacoco-gwt-maven-plugin</artifactId>
-            <version>0.5.4-SNAPSHOT</version>
+            <version>0.5.4.201202141554</version>
             <configuration>
               <append>false</append>
             </configuration>
