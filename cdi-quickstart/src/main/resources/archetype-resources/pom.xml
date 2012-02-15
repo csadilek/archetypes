@@ -218,12 +218,12 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <delete file="war/WEB-INF/jetty-deployment-structure.xml"/>
-                                        <copy file="src/jetty/web.xml" toDir="war/WEB-INF"
+                                        <delete file="src/main/webapp/WEB-INF/jetty-deployment-structure.xml"/>
+                                        <copy file="src/jetty/web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
-                                        <copy file="src/jetty/jetty-env.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jetty/jetty-env.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
-                                        <copy file="src/jetty/jndi.properties" toDir="war/WEB-INF/classes/"
+                                        <copy file="src/jetty/jndi.properties" toDir="src/main/webapp/WEB-INF/classes/"
                                               overwrite="true"/>
                                     </tasks>
                                 </configuration>
@@ -281,12 +281,12 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jetty7+/web.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jetty7+/web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
                                         <!-- We don't need jetty-env as we are using the BeanManagerResourceBindingListener to
                                    bind the BeanManager in JNDI. -->
-                                        <delete file="war/WEB-INF/classes/jetty-env.properties"/>
-                                        <delete file="war/WEB-INF/classes/jndi.properties"/>
+                                        <delete file="src/main/webapp/WEB-INF/classes/jetty-env.properties"/>
+                                        <delete file="src/main/webapp/WEB-INF/classes/jndi.properties"/>
                                     </tasks>
                                 </configuration>
                                 <goals>
@@ -503,16 +503,16 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jboss/web.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
-                                        <copy file="src/jboss/jboss-web.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jboss/jboss-web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
-                                        <copy file="src/jboss/jboss-beans.xml" toDir="war/META-INF"
+                                        <copy file="src/jboss/jboss-beans.xml" toDir="src/main/webapp/META-INF"
                                               overwrite="true"/>
 
-                                        <delete file="war/WEB-INF/jetty-env.xml"/>
-                                        <delete file="war/WEB-INF/jetty-deployment-structure.xml"/>
-                                        <delete file="war/WEB-INF/classes/jndi.properties"/>
+                                        <delete file="src/main/webapp/WEB-INF/jetty-env.xml"/>
+                                        <delete file="src/main/webapp/WEB-INF/jetty-deployment-structure.xml"/>
+                                        <delete file="src/main/webapp/WEB-INF/classes/jndi.properties"/>
                                     </tasks>
                                 </configuration>
                                 <goals>
@@ -697,8 +697,8 @@
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.1.1</version>
                         <configuration>
-                            <warSourceDirectory>war</warSourceDirectory>
-                            <webappDirectory>war</webappDirectory>
+                            <warSourceDirectory>src/main/webapp/</warSourceDirectory>
+                            <webappDirectory>src/main/webapp/</webappDirectory>
                             <webXml>src/jetty/web.xml</webXml>
                             <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
 
@@ -720,14 +720,14 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jboss/web.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
-                                        <copy file="src/jboss/jboss-deployment-structure.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jboss/jboss-deployment-structure.xml" toDir="src/main/webapp/WEB-INF"
                                                                                       overwrite="true"/>
 
 
-                                        <delete file="war/WEB-INF/jetty-env.xml"/>
-                                        <delete file="war/WEB-INF/classes/jndi.properties"/>
+                                        <delete file="src/main/webapp/WEB-INF/jetty-env.xml"/>
+                                        <delete file="src/main/webapp/WEB-INF/classes/jndi.properties"/>
                                         <delete file="src/main/resources/jndi.properties"/>
                                     </tasks>
                                 </configuration>
@@ -911,8 +911,8 @@
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.1.1</version>
                         <configuration>
-                            <warSourceDirectory>war</warSourceDirectory>
-                            <webappDirectory>war</webappDirectory>
+                            <warSourceDirectory>src/main/webapp/</warSourceDirectory>
+                            <webappDirectory>src/main/webapp/</webappDirectory>
                             <webXml>src/jetty/web.xml</webXml>
                             <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
                             <outputDirectory>deployments</outputDirectory>
@@ -929,13 +929,13 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jboss/web.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
 
-                                        <delete file="war/WEB-INF/jetty-env.xml"/>
-                                        <delete file="war/WEB-INF/classes/jndi.properties"/>
+                                        <delete file="src/main/webapp/WEB-INF/jetty-env.xml"/>
+                                        <delete file="src/main/webapp/WEB-INF/classes/jndi.properties"/>
 
-                                        <copy todir="war/app/">
+                                        <copy todir="src/main/webapp/app/">
                                             <fileset dir="war.cache/app/"/>
                                         </copy>
                                     </tasks>
@@ -1151,15 +1151,15 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jboss/web.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
 
-                                        <delete file="war/WEB-INF/jetty-env.xml"/>
+                                        <delete file="src/main/webapp/WEB-INF/jetty-env.xml"/>
 
-                                        <delete file="war/WEB-INF/classes/jndi.properties"/>
+                                        <delete file="src/main/webapp/WEB-INF/classes/jndi.properties"/>
 
                                         <copy todir="war.cache/app/">
-                                            <fileset dir="war/app/"/>
+                                            <fileset dir="src/main/webapp/app/"/>
                                         </copy>
 
                                         <exec executable="git">
@@ -1205,9 +1205,9 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <delete file="war/WEB-INF/jetty-deployment-structure.xml"/>
+                                        <delete file="src/main/webapp/WEB-INF/jetty-deployment-structure.xml"/>
 
-                                        <copy file="src/tomcat/context.xml" toDir="war/META-INF"
+                                        <copy file="src/tomcat/context.xml" toDir="src/main/webapp/META-INF"
                                               overwrite="true"/>
                                     </tasks>
                                 </configuration>
@@ -1226,7 +1226,7 @@
         <profile>
             <id>integration-test</id>
             <properties>
-                <profile.testOutputDirectory>war/WEB-INF/classes</profile.testOutputDirectory>
+                <profile.testOutputDirectory>src/main/webapp/WEB-INF/classes</profile.testOutputDirectory>
             </properties>
 
             <build>
@@ -1284,7 +1284,7 @@
                                 <phase>process-test-resources</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jetty/web.xml" toDir="war/WEB-INF"
+                                        <copy file="src/jetty/web.xml" toDir="src/main/webapp/WEB-INF"
                                               overwrite="true"/>
                                     </tasks>
                                 </configuration>
@@ -1471,7 +1471,7 @@
     </profiles>
     <build>
         <finalName>\${project.artifactId}</finalName>
-        <outputDirectory>war/WEB-INF/classes</outputDirectory>
+        <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
         <plugins>
             <plugin>
@@ -1482,11 +1482,11 @@
                     <inplace>true</inplace>
                     <logLevel>INFO</logLevel>
                     <runTarget>App.html</runTarget>
-                    <warSourceDirectory>war</warSourceDirectory>
+                    <warSourceDirectory>src/main/webapp/</warSourceDirectory>
                     <extraJvmArgs>-Xmx512m</extraJvmArgs>
                     <soyc>false</soyc>
                     <webXml>src/jetty/web.xml</webXml>
-                    <hostedWebapp>war</hostedWebapp>
+                    <hostedWebapp>src/main/webapp/</hostedWebapp>
                     <server>org.jboss.errai.cdi.server.gwt.JettyLauncher</server>
                 </configuration>
                 <executions>
@@ -1502,8 +1502,8 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <warSourceDirectory>war</warSourceDirectory>
-                    <webappDirectory>war</webappDirectory>
+                    <warSourceDirectory>src/main/webapp/</warSourceDirectory>
+                    <webappDirectory>src/main/webapp/</webappDirectory>
                     <webXml>src/jetty/web.xml</webXml>
                     <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
 
@@ -1538,14 +1538,14 @@
                                 <!-- The gwt-maven-plugin use the war source folder as it's
                     build directory. We need to cleanup after we'd run the plugin and remove
                     all GWT related artifacts that are required to run the hosted mode. -->
-                                <delete dir="war/WEB-INF/classes"/>
-                                <delete dir="war/WEB-INF/lib"/>
-                                <delete dir="war/META-INF"/>
-                                <delete file="war/WEB-INF/web.xml"/>
-                                <delete dir="war/app"/>
+                                <delete dir="src/main/webapp/WEB-INF/classes"/>
+                                <delete dir="src/main/webapp/WEB-INF/lib"/>
+                                <delete dir="src/main/webapp/META-INF"/>
+                                <delete file="src/main/webapp/WEB-INF/web.xml"/>
+                                <delete dir="src/main/webapp/app"/>
                                 <delete dir="target"/>
 
-                                <copy file="src/\${webDescriptor}/web.xml" toDir="war/WEB-INF"/>
+                                <copy file="src/\${webDescriptor}/web.xml" toDir="src/main/webapp/WEB-INF"/>
                             </tasks>
                         </configuration>
                         <goals>

@@ -275,8 +275,8 @@
             <artifactId>maven-war-plugin</artifactId>
             <version>2.1.1</version>
             <configuration>
-              <warSourceDirectory>war</warSourceDirectory>
-              <webappDirectory>war</webappDirectory>
+              <warSourceDirectory>src/main/webapp/</warSourceDirectory>
+              <webappDirectory>src/main/webapp/</webappDirectory>
               <webXml>src/jetty/web.xml</webXml>
               <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
               <outputDirectory>deployments</outputDirectory>
@@ -293,13 +293,13 @@
                 <phase>prepare-package</phase>
                 <configuration>
                   <tasks>
-                    <copy file="src/jboss/web.xml" toDir="war/WEB-INF"
+                    <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF"
                       overwrite="true" />
 
-                    <delete file="war/WEB-INF/jetty-env.xml" />
-                    <delete file="war/WEB-INF/classes/jndi.properties" />
+                    <delete file="src/main/webapp/WEB-INF/jetty-env.xml" />
+                    <delete file="src/main/webapp/WEB-INF/classes/jndi.properties" />
 
-                    <copy todir="war/app/">
+                    <copy todir="src/main/webapp/app/">
                       <fileset dir="war.cache/app/" />
                     </copy>
                   </tasks>
@@ -358,15 +358,15 @@
                 <phase>prepare-package</phase>
                 <configuration>
                   <tasks>
-                    <copy file="src/jboss/web.xml" toDir="war/WEB-INF"
+                    <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF"
                       overwrite="true" />
 
-                    <delete file="war/WEB-INF/jetty-env.xml" />
+                    <delete file="src/main/webapp/WEB-INF/jetty-env.xml" />
 
-                    <delete file="war/WEB-INF/classes/jndi.properties" />
+                    <delete file="src/main/webapp/WEB-INF/classes/jndi.properties" />
 
                     <copy todir="war.cache/app/">
-                      <fileset dir="war/app/" />
+                      <fileset dir="src/main/webapp/app/" />
                     </copy>
 
                     <exec executable="git">
@@ -399,7 +399,7 @@
     <profile>
       <id>integration-test</id>
       <properties>
-        <profile.testOutputDirectory>war/WEB-INF/classes</profile.testOutputDirectory>
+        <profile.testOutputDirectory>src/main/webapp/WEB-INF/classes</profile.testOutputDirectory>
       </properties>
 
       <build>
@@ -455,7 +455,7 @@
                 <phase>process-test-resources</phase>
                 <configuration>
                   <tasks>
-                    <copy file="src/testwebxml/web.xml" toDir="war/WEB-INF"
+                    <copy file="src/testwebxml/web.xml" toDir="src/main/webapp/WEB-INF"
                       overwrite="true" />
                   </tasks>
                 </configuration>
@@ -496,7 +496,7 @@
 
   <build>
     <finalName>\${project.artifactId}</finalName>
-    <outputDirectory>war/WEB-INF/classes</outputDirectory>
+    <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
     <plugins>
       <plugin>
@@ -507,10 +507,10 @@
           <inplace>true</inplace>
           <logLevel>INFO</logLevel>
           <runTarget>App.html</runTarget>
-          <warSourceDirectory>war</warSourceDirectory>
+          <warSourceDirectory>src/main/webapp/</warSourceDirectory>
           <extraJvmArgs>-Xmx512m</extraJvmArgs>
           <treeLogger>true</treeLogger>
-          <hostedWebapp>war</hostedWebapp>
+          <hostedWebapp>src/main/webapp/</hostedWebapp>
         </configuration>
         <executions>
           <execution>
@@ -538,7 +538,7 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>2.1.1</version>
         <configuration>
-          <warSourceDirectory>war</warSourceDirectory>
+          <warSourceDirectory>src/main/webapp/</warSourceDirectory>
           <webXml>\${webXmlPath}</webXml>
           <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
         </configuration>
@@ -550,7 +550,7 @@
         <configuration>
           <filesets>
             <fileset>
-              <directory>war</directory>
+              <directory>src/main/webapp/</directory>
               <includes>
                 <include>WEB-INF/classes/**</include>
                 <include>WEB-INF/lib/**</include>
