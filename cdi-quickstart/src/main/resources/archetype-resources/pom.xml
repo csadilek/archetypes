@@ -1271,6 +1271,10 @@
                                     <name>errai.hosted_mode_testing</name>
                                     <value>true</value>
                                 </property>
+                                <property>
+                                    <name>gwt.args</name>
+                                    <value>-war src/main/webapp</value>
+                                </property>
                             </systemProperties>
                         </configuration>
                     </plugin>

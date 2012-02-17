@@ -297,7 +297,8 @@
                       overwrite="true" />
 
                     <delete file="src/main/webapp/WEB-INF/jetty-env.xml" />
-                    <delete file="src/main/webapp/WEB-INF/classes/jndi.properties" />
+                    <delete
+                      file="src/main/webapp/WEB-INF/classes/jndi.properties" />
 
                     <copy todir="src/main/webapp/app/">
                       <fileset dir="war.cache/app/" />
@@ -363,7 +364,8 @@
 
                     <delete file="src/main/webapp/WEB-INF/jetty-env.xml" />
 
-                    <delete file="src/main/webapp/WEB-INF/classes/jndi.properties" />
+                    <delete
+                      file="src/main/webapp/WEB-INF/classes/jndi.properties" />
 
                     <copy todir="war.cache/app/">
                       <fileset dir="src/main/webapp/app/" />
@@ -442,6 +444,10 @@
                   <name>errai.hosted_mode_testing</name>
                   <value>true</value>
                 </property>
+                <property>
+                  <name>gwt.args</name>
+                  <value>-war src/main/webapp</value>
+                </property>
               </systemProperties>
             </configuration>
           </plugin>
@@ -491,6 +497,14 @@
           </plugin>
         </plugins>
       </build>
+      <dependencies>
+        <dependency>
+          <groupId>com.google.gwt</groupId>
+          <artifactId>gwt-dev</artifactId>
+          <version>\${gwt.version}</version>
+          <scope>compile</scope>
+        </dependency>
+      </dependencies>
     </profile>
   </profiles>
 
