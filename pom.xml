@@ -5,7 +5,7 @@
 
 	<groupId>org.jboss.errai.archetypes</groupId>
 	<artifactId>archetypes-parent</artifactId>
-	<version>2.0.Beta2</version>
+	<version>2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Errai Archetypes</name>
