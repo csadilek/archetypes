@@ -262,6 +262,7 @@
                     <scope>provided</scope>
                 </dependency>
                 
+                <!-- This is the same version used to compile Weld 1.1.5.Final. -->
                 <dependency>
                     <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-servlet</artifactId>
