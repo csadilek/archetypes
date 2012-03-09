@@ -1,0 +1,1 @@
+package jboss-as:deploy gwt:run jboss-as:undeploy

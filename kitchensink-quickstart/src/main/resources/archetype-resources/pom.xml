@@ -28,7 +28,7 @@
       You can actually use this stack with any version of JBoss AS that implements 
       the Java EE 6 web profile -->
     <!-- <version.org.jboss.spec.jboss.javaee6>2.0.0.Final</version.org.jboss.spec.jboss.javaee6> -->
-    <version.org.jboss.errai>2.0-SNAPSHOT</version.org.jboss.errai>
+    <version.org.jboss.errai>${errai.target.version}</version.org.jboss.errai>
     <version.com.google.gwt>2.4.0</version.com.google.gwt>
     <version.org.codehaus.mojo.gwt.maven.plugin>\${version.com.google.gwt}</version.org.codehaus.mojo.gwt.maven.plugin>
 #else
@@ -38,7 +38,7 @@
       work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 maven 
       repository. -->
     <!-- <version.org.jboss.spec.jboss.javaee6>3.0.0.Beta1-redhat-1</version.org.jboss.spec.jboss.javaee6> -->
-    <version.org.jboss.errai>2.0-SNAPSHOT</version.org.jboss.errai>
+    <version.org.jboss.errai>${errai.target.version}</version.org.jboss.errai>
     <version.com.google.gwt>2.4.0</version.com.google.gwt>
     <version.org.codehaus.mojo.gwt.maven.plugin>\${version.com.google.gwt}</version.org.codehaus.mojo.gwt.maven.plugin>
 #end
@@ -412,7 +412,7 @@
             mode) to not start the default server (embedded jetty), but to download the 
             HTML host page from the configured runTarget. -->
           <noServer>true</noServer>
-          <runTarget>http://localhost:8080/jboss-as-kitchensink-errai/KitchenSink.html</runTarget>
+          <runTarget>http://localhost:8080/\${artifactId}/KitchenSink.html</runTarget>
 
         </configuration>
         <executions>
