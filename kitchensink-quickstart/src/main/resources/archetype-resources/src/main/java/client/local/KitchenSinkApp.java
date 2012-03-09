@@ -5,7 +5,6 @@ package ${package}.client.local;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
@@ -15,7 +14,7 @@ import ${package}.client.shared.New;
 import org.jboss.errai.bus.client.api.ErrorCallback;
 import org.jboss.errai.bus.client.api.Message;
 import org.jboss.errai.bus.client.api.RemoteCallback;
-import org.jboss.errai.enterprise.client.cdi.api.CDI;
+import org.jboss.errai.ioc.client.api.AfterInitialization;
 import org.jboss.errai.ioc.client.api.Caller;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 
@@ -47,21 +46,24 @@ public class KitchenSinkApp {
 
   private KitchenSinkClient kitchenSinkUi;
 
-  @PostConstruct
+  /**
+   * Builds the UI and populates the member list by making an RPC call to the server.
+   * <p>
+   * Note that because this method performs an RPC call to the server, it is annotated
+   * with AfterInitialization rather than PostConstruct: the contract of PostConstruct
+   * only guarantees that all of <em>this</em> bean's dependencies have been injected,
+   * but it does not guarantee that the entire runtime environment has completed its
+   * bootstrapping routine. Methods annotated with the Errai-specific AfterInitialization
+   * are only called once everything is up and running, including the communication
+   * channel to the server.
+   */
+  @AfterInitialization
   public void createUI() {
     kitchenSinkUi = new KitchenSinkClient(memberService);
     kitchenSinkUi.setTableStatusMessage("Fetching member list...");
 
     RootPanel.get("kitchensink").add(kitchenSinkUi);
-
-    // Can't call RPC methods yet, because CDI may not have found all the remote services yet.
-    // The CDI post init tasks run after the server-side services have been dicovered.
-    CDI.addPostInitTask(new Runnable() {
-      @Override
-      public void run() {
-        fetchMemberList();
-      }
-    });
+    fetchMemberList();
   }
 
   /**

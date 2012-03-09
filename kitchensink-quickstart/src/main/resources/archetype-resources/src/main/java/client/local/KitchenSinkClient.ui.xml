@@ -60,5 +60,9 @@
 
     <p>REST URL for all members: <a target="_blank" href="rest/members">rest/members</a></p>
     
+    <p>Note: to see Errai broadcasting push notifications, open this page in another browser (a completely
+       different browser, not just a new window in the same browser). Every member you register will
+       appear in all browsers simultaneously.</p>
+    
   </g:HTMLPanel>
 </ui:UiBinder> 
