@@ -1518,16 +1518,9 @@
                     <webappDirectory>src/main/webapp/</webappDirectory>
                     <webXml>src/jetty/web.xml</webXml>
                     <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
-
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
+            
             <!-- Tests are skipped by default because they require additional GWT
     dependencies. Run mvn with -Pintegration-test to enable testing. -->
             <plugin>
@@ -1537,6 +1530,7 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -1547,17 +1541,8 @@
                         <phase>clean</phase>
                         <configuration>
                             <tasks>
-                                <!-- The gwt-maven-plugin use the war source folder as it's
-                    build directory. We need to cleanup after we'd run the plugin and remove
-                    all GWT related artifacts that are required to run the hosted mode. -->
-                                <delete dir="src/main/webapp/WEB-INF/classes"/>
-                                <delete dir="src/main/webapp/WEB-INF/lib"/>
-                                <delete dir="src/main/webapp/META-INF"/>
-                                <delete file="src/main/webapp/WEB-INF/web.xml"/>
-                                <delete dir="src/main/webapp/app"/>
-                                <delete dir="target"/>
-
-                                <copy file="src/\${webDescriptor}/web.xml" toDir="src/main/webapp/WEB-INF"/>
+                                <!-- FIXME this should be done as an additional resource in the maven-war-plugin -->
+                                <copy file="src/${webDescriptor}/web.xml" toDir="war/WEB-INF" />
                             </tasks>
                         </configuration>
                         <goals>
@@ -1598,6 +1583,28 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}</directory>
+                            <includes>
+                                <include>www-test/**</include>
+                                <include>.gwt/**</include>
+                                <include>.errai/**</include>
+                                <include>src/main/webapp/WEB-INF/deploy/**</include>
+                                <include>src/main/webapp/WEB-INF/lib/**</include>
+                                <include>**/gwt-unitCache/**</include>
+                                <include>**/*.JUnit/**</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
         </plugins>
         <pluginManagement>
             <plugins>

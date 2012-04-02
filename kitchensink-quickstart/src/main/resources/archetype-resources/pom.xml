@@ -373,7 +373,7 @@
         annotation processors -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.1</version>
+        <version>2.3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -447,16 +447,17 @@
         <configuration>
           <filesets>
             <fileset>
-              <directory>.errai</directory>
-            </fileset>
-            <fileset>
-              <directory>.gwt</directory>
-            </fileset>
-            <fileset>
-              <directory>src/main/gwt-unitCache</directory>
-            </fileset>
-            <fileset>
-              <directory>src/main/webapp/KitchenSink</directory>
+                <directory>${basedir}</directory>
+                <includes>
+                    <include>www-test/**</include>
+                    <include>.gwt/**</include>
+                    <include>.errai/**</include>
+                    <include>src/main/webapp/KitchenSink/**</include>
+                    <include>src/main/webapp/WEB-INF/deploy/**</include>
+                    <include>src/main/webapp/WEB-INF/lib/**</include>
+                    <include>**/gwt-unitCache/**</include>
+                    <include>**/*.JUnit/**</include>
+                </includes>
             </fileset>
           </filesets>
         </configuration>
