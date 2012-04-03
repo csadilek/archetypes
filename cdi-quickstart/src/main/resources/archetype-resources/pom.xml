@@ -1256,7 +1256,7 @@
                     </plugin>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.7.2</version>
+                        <version>2.5</version>
                         <configuration>
                             <skipTests>false</skipTests>
                             <additionalClasspathElements>
@@ -1522,10 +1522,10 @@
             </plugin>
             
             <!-- Tests are skipped by default because they require additional GWT
-    dependencies. Run mvn with -Pintegration-test to enable testing. -->
+                 dependencies. Run mvn with -Pintegration-test to enable testing. -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.7.2</version>
+                <version>2.5</version>
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
