@@ -31,9 +31,12 @@
 		<developer>
 			<name>Christian Sadilek</name>
 		</developer>
-		<developer>
-			<name>Heiko Braun</name>
-		</developer>
+        <developer>
+            <name>Jonathan Fuerth</name>
+        </developer>
+        <developer>
+            <name>Heiko Braun</name>
+        </developer>
 	</developers>
 
 	<organization>
@@ -86,11 +89,16 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/pom.xml</include>
+					<include>**/README.md</include>
 				</includes>
 				<filtering>true</filtering>
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/pom.xml</exclude>
+                    <exclude>**/README.md</exclude>
+                </excludes>
 				<filtering>false</filtering>
 			</resource>
 		</resources>
