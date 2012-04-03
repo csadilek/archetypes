@@ -18,6 +18,9 @@ public class SimpleCDIService {
 
   public void handleMessage(@Observes HelloMessage event) {
     System.out.println("Received HelloMessage from Client: " + event.getMessage());
+
+    // Note that because Response is declared @Conversational, this message
+    // only goes to the client who sent the HelloEvent.
     responseEvent.fire(new Response(event.getMessage() + " @ timemillis: " + System.currentTimeMillis()));
   }
 }

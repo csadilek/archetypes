@@ -6,6 +6,13 @@ import org.jboss.errai.enterprise.client.cdi.api.Conversational;
 /**
  * A marshallable bean that carries the response event from the server back to
  * the client.
+ * <p>
+ * This is a {@code @Conversational} bean, so if it is fired as a CDI event from
+ * within an observer method, it will only be delivered to the client who originated
+ * the first event. Without the {@code @Conversational} annotation, this event would
+ * be broadcast to every client every time it was fired. See the
+ * <a href="https://docs.jboss.org/author/display/ERRAI/Events#Events-Conversationalevents">
+ * conversational events</a> section of the Errai Reference Guide for details.
  */
 @Portable
 @Conversational

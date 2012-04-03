@@ -36,7 +36,13 @@ public class App {
 
         button.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
+
+                // In GWT Dev Mode, Text written to System.out shows up in the
+                // console where you launched Dev Mode (eg. in your terminal
+                // window or in the Eclipse Console tab).
+                // In Production Mode, System.out is a black hole.
                 System.out.println("Handling click event!");
+
                 fireMessage();
             }
         });
