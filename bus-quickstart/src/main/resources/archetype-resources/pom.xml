@@ -221,6 +221,7 @@
                             <warSourceDirectory>src/main/webapp/</warSourceDirectory>
                             <webappDirectory>src/main/webapp/</webappDirectory>
                             <webXml>src/jetty/web.xml</webXml>
+                            <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
                             <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
                             <outputDirectory>deployments</outputDirectory>
                         </configuration>
@@ -281,6 +282,7 @@
                             <warSourceDirectory>war.cache</warSourceDirectory>
                             <webappDirectory>war.cache</webappDirectory>
                             <webXml>src/jetty/web.xml</webXml>
+                            <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
                             <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
 
                             <archive>
@@ -563,6 +565,7 @@
                 <configuration>
                     <warSourceDirectory>src/main/webapp/</warSourceDirectory>
                     <webXml>\${webXmlPath}</webXml>
+                    <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
                     <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
                 </configuration>
             </plugin>
