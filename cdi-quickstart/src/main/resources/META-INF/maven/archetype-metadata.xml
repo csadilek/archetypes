@@ -50,9 +50,6 @@
             </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
-            <directory>src/jboss6</directory>
-        </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
             <directory>src/jboss7</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
