@@ -290,8 +290,16 @@
         <profile>
             <id>integration-test</id>
             <properties>
-                <profile.testOutputDirectory>src/main/webapp/WEB-INF/classes</profile.testOutputDirectory>
+                <profile.testOutputDirectory>\${basedir}/target/test-classes</profile.testOutputDirectory>
             </properties>
+
+            <dependencies>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-dev</artifactId>
+                    <version>\${gwt.version}</version>
+                </dependency>
+            </dependencies>
 
             <build>
                 <testResources>
@@ -316,7 +324,7 @@
                         <configuration>
                             <skipTests>false</skipTests>
                             <additionalClasspathElements>
-                                <additionalClasspathElement>\${basedir}/\${profile.testOutputDirectory}/</additionalClasspathElement>
+                                <additionalClasspathElement>\${profile.testOutputDirectory}/</additionalClasspathElement>
                                 <additionalClasspathElement>\${basedir}/src/test/java/</additionalClasspathElement>
                                 <additionalClasspathElement>\${basedir}/src/main/java/</additionalClasspathElement>
                             </additionalClasspathElements>
@@ -339,130 +347,8 @@
                             </systemProperties>
                         </configuration>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.3</version>
-                        <executions>
-                            <execution>
-                                <id>test.webxml</id>
-                                <phase>process-test-resources</phase>
-                                <configuration>
-                                    <tasks>
-                                        <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF" overwrite="true" />
-                                    </tasks>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
-
-            <dependencies>
-                <dependency>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                    <version>2.5</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>jsp-api</artifactId>
-                    <version>2.0</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                    <version>1.2.16</version>
-                </dependency>
-                <dependency>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                    <version>4.8.1</version>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.ejb3</groupId>
-                    <artifactId>jboss-ejb3-api</artifactId>
-                    <scope>provided</scope>
-                    <version>3.1.0</version>
-                </dependency>
-
-                <!-- Errai Core -->
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-bus</artifactId>
-                    <version>\${errai.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-ioc</artifactId>
-                    <version>\${errai.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>javax.inject</groupId>
-                            <artifactId>javax.inject</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>javax.annotation</groupId>
-                            <artifactId>jsr250-api</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-tools</artifactId>
-                    <version>\${errai.version}</version>
-                </dependency>
-
-                <!-- GWT and GWT Extensions -->
-                <dependency>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-user</artifactId>
-                    <version>\${gwt.version}</version>
-                    <scope>compile</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-dev</artifactId>
-                    <version>\${gwt.version}</version>
-                    <scope>compile</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                    <version>1.0.0.GA</version>
-                    <scope>compile</scope>
-                </dependency>
-
-                <!-- Runtime / Container dependencies -->
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                    <version>\${slf4j.version}</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss</groupId>
-                    <artifactId>jboss-common-core</artifactId>
-                    <version>2.2.14.GA</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-javax-enterprise</artifactId>
-                    <version>\${errai.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-
-            </dependencies>
         </profile>
     </profiles>
 
