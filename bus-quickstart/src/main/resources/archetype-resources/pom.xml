@@ -29,7 +29,6 @@
         <gwt.version>2.4.0</gwt.version>
         <gwt.maven.version>2.4.0</gwt.maven.version>
         <slf4j.version>1.6.1</slf4j.version>
-        <webXmlPath>src/jetty/web.xml</webXmlPath>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -94,10 +93,20 @@
 
     <profiles>
         <profile>
+            <id>jetty</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <webDescriptor>jetty</webDescriptor>
+            </properties>
+        </profile>
+
+        <profile>
             <id>jboss5</id>
 
             <properties>
-                <webXmlPath>src/jboss/web.xml</webXmlPath>
+                <webDescriptor>jboss5</webDescriptor>
             </properties>
 
             <dependencies>
@@ -136,72 +145,20 @@
                 </dependency>
             </dependencies>
         </profile>
-        <profile>
-            <id>jboss6</id>
 
-            <properties>
-                <webXmlPath>src/jboss/web.xml</webXmlPath>
-            </properties>
-
-            <dependencies>
-                <dependency>
-                    <groupId>org.jboss.errai</groupId>
-                    <artifactId>errai-ioc</artifactId>
-                    <exclusions>
-                        <exclusion>
-                            <artifactId>jsr250-api</artifactId>
-                            <groupId>javax.annotation</groupId>
-                        </exclusion>
-                        <exclusion>
-                            <artifactId>javax.inject</artifactId>
-                            <groupId>javax.inject</groupId>
-                        </exclusion>
-                    </exclusions>
-                    <scope>compile</scope>
-                    <version>\${errai.version}</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>javax.inject</groupId>
-                    <artifactId>javax.inject</artifactId>
-                    <version>1</version>
-                    <scope>provided</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                    <version>\${slf4j.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <version>\${slf4j.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.javassist</groupId>
-                    <artifactId>javassist</artifactId>
-                    <version>3.15.0-GA</version>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
-        </profile>
         <profile>
             <id>jboss7</id>
 
             <properties>
-                <webXmlPath>src/jboss/web.xml</webXmlPath>
+                <webDescriptor>jboss7</webDescriptor>
             </properties>
         </profile>
+
         <profile>
             <id>tomcat</id>
 
             <properties>
-                <webXmlPath>src/tomcat/web.xml</webXmlPath>
+                <webDescriptor>tomcat</webDescriptor>
             </properties>
         </profile>
 
@@ -209,7 +166,7 @@
         <profile>
             <id>openshift</id>
             <properties>
-                <webXmlPath>src/jboss/web.xml</webXmlPath>
+                <webDescriptor>jboss7</webDescriptor>
             </properties>
 
             <build>
@@ -218,9 +175,6 @@
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.1.1</version>
                         <configuration>
-                            <warSourceDirectory>src/main/webapp/</warSourceDirectory>
-                            <webappDirectory>src/main/webapp/</webappDirectory>
-                            <webXml>src/jetty/web.xml</webXml>
                             <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
                             <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
                             <outputDirectory>deployments</outputDirectory>
@@ -270,7 +224,7 @@
         <profile>
             <id>openshift-prepare</id>
             <properties>
-                <webXmlPath>src/jboss/web.xml</webXmlPath>
+                <webDescriptor>jboss7</webDescriptor>
             </properties>
 
             <build>
@@ -281,15 +235,15 @@
                         <configuration>
                             <warSourceDirectory>war.cache</warSourceDirectory>
                             <webappDirectory>war.cache</webappDirectory>
-                            <webXml>src/jetty/web.xml</webXml>
                             <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
                             <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
 
-                            <archive>
-                                <manifestEntries>
-                                    <Dependencies>org.jboss.as.naming,org.jboss.as.server,org.jboss.msc</Dependencies>
-                                </manifestEntries>
-                            </archive>
+                            <webResources>
+                                <resource>
+                                    <!-- this is relative to the pom.xml directory -->
+                                    <directory>src/${webDescriptor}</directory>
+                                </resource>
+                            </webResources>
                         </configuration>
                     </plugin>
 
@@ -303,13 +257,6 @@
                                 <phase>prepare-package</phase>
                                 <configuration>
                                     <tasks>
-                                        <copy file="src/jboss/web.xml" toDir="src/main/webapp/WEB-INF"
-                                            overwrite="true" />
-
-                                        <delete file="src/main/webapp/WEB-INF/jetty-env.xml" />
-
-                                        <delete file="src/main/webapp/WEB-INF/classes/jndi.properties" />
-
                                         <copy todir="war.cache/app/">
                                             <fileset dir="src/main/webapp/app/" />
                                         </copy>
@@ -520,7 +467,6 @@
     </profiles>
 
     <build>
-        <finalName>\${project.artifactId}</finalName>
         <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
         <plugins>
@@ -529,13 +475,12 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <version>\${gwt.maven.version}</version>
                 <configuration>
-                    <inplace>true</inplace>
                     <logLevel>INFO</logLevel>
-                    <runTarget>App.html</runTarget>
-                    <warSourceDirectory>src/main/webapp/</warSourceDirectory>
+                    <runTarget>App.html</runTarget> 
                     <extraJvmArgs>-Xmx512m</extraJvmArgs>
-                    <treeLogger>true</treeLogger>
+                    <soyc>false</soyc>
                     <hostedWebapp>src/main/webapp/</hostedWebapp>
+                    <treeLogger>true</treeLogger>
                 </configuration>
                 <executions>
                     <execution>
@@ -563,10 +508,16 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <warSourceDirectory>src/main/webapp/</warSourceDirectory>
-                    <webXml>\${webXmlPath}</webXml>
+                    <warName>\${project.artifactId}</warName>
                     <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
                     <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
+
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>src/${webDescriptor}</directory>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
 
@@ -611,7 +562,7 @@
                 <configuration>
                     <filesets>
                         <fileset>
-                            <directory>${basedir}</directory>
+                            <directory>\${basedir}</directory>
                             <includes>
                                 <include>www-test/**</include>
                                 <include>.gwt/**</include>
