@@ -3,7 +3,7 @@ package ${package}.client.local;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.jboss.errai.ioc.client.api.Bootstrapper;
+import org.jboss.errai.ioc.client.Container;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 
 import com.google.gwt.core.client.GWT;
@@ -54,10 +54,8 @@ public class ErraiIocTestHelper {
    *          context of the web page.
    */
   public static void afterIocInitialized(final Runnable runnable) {
-    Bootstrapper bootstrapper = GWT.create(Bootstrapper.class);
-    System.out.println("before bootstrapContainer");
-    bootstrapper.bootstrapContainer();
-    System.out.println("after bootstrapContainer");
+    new Container().onModuleLoad();
+    
     if (instance == null) {
       System.out.println(" ****** Look out! Null instance!");
     }
