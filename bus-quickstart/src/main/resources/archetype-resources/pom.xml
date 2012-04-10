@@ -73,7 +73,7 @@
             <version>\${gwt.version}</version>
         </dependency>
 
-        <!-- Uncomment this to make mvn gwt:run work (you will see warnings about "complex dependency conflicts")
+        <!--
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
