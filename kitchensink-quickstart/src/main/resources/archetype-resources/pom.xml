@@ -131,12 +131,6 @@
       </dependency>
 
       <dependency>
-        <groupId>org.jboss.errai</groupId>
-        <artifactId>jboss7-support</artifactId>
-        <version>\${version.org.jboss.errai}</version>
-      </dependency>
-
-      <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-user</artifactId>
         <version>\${version.com.google.gwt}</version>
@@ -336,10 +330,6 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>jboss7-support</artifactId>
     </dependency>
     <!-- End of Errai dependencies -->
 
