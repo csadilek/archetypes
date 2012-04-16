@@ -57,23 +57,12 @@
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
             <directory>src/jetty</directory>
-            <includes>
-                <include>**/*.xml</include>
-                <include>**/*.properties</include>
-            </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
             <directory>src/jetty7+</directory>
-            <includes>
-                <include>**/*.xml</include>
-                <include>**/*.properties</include>
-            </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
             <directory>src/tomcat</directory>
-            <includes>
-                <include>**/*.xml</include>
-            </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
             <directory>src/main/webapp</directory>
