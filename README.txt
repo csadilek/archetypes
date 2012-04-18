@@ -1,16 +1,35 @@
-
 Errai Quickstart Archetypes
 =======================================
 
-Build using: mvn clean install
+Build using:
 
-Specify which versions of Errai the generated projects should depend on:
+    mvn clean install
 
--Derrai.target.version= (defaults to the project version of the archetype) 
--Derrai.cdi.target.version= (defaults to errai.target.version)
--Derrai.jaxrs.target.version= (defaults to errai.target.version)
+By default, the project version of the archetypes themselves will be used as the version of Errai.
+So if this archetype parent pom is version 2.0.Final, then the archetypes will generate projects
+that depend on Errai 2.0.Final.
 
-e.g. mvn clean install -Derrai.target.version=2.0.pre0 -Derrai.cdi.target.version=2.0-SNAPSHOT -Derrai.jaxrs.target.version=2.0-SNAPSHOT
+Sometimes, you will want to release archetypes whose versions don't match the version of Errai
+they depend on. For example, if there was an error in the 2.0.Final archetypes themselves, you
+might want to relase archetypes with version 2.0.1.Final that still depend on Errai 2.0.Final.
+You would achieve that with the property:
+
+    -Derrai.target.version=x.y.z
+
+To illustrate the case above, you would update pom.xml in this directory to version 2.0.1.Final,
+then build like this:
+
+    mvn clean install -Derrai.target.version=2.0.Final
+
+
+Skipping the Tests
+=======================================
+
+The tests are very valuable, but also time-consuming because they depoloy to app servers. If
+you're just pulling in someone's already-tested changes. To skip the tests, just build like this:
+
+    mvn clean install -Darchetype.test.skip=true
+
 
 Troubleshooting
 =======================================

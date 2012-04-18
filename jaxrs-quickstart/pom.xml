@@ -28,7 +28,6 @@
     <name>Errai JAX-RS Quickstart Archetype</name>
 
     <properties>
-        <errai.jaxrs.target.version>${errai.target.version}</errai.jaxrs.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
