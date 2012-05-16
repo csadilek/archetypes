@@ -24,15 +24,15 @@
     <!-- Certified version of the JBoss EAP components we want to use -->
     <version.org.jboss.spec.jboss.javaee6>3.0.0.Final-redhat-1</version.org.jboss.spec.jboss.javaee6>
     <!-- Alternatively, comment out the above line, and un-comment the line 
-      below to use version 2.0.0.Final which is based on community built dependencies. 
+      below to use version 3.0.0.Final which is based on community built dependencies. 
       You can actually use this stack with any version of JBoss AS that implements 
       the Java EE 6 web profile -->
-    <!-- <version.org.jboss.spec.jboss.javaee6>2.0.0.Final</version.org.jboss.spec.jboss.javaee6> -->
+    <!-- <version.org.jboss.spec.jboss.javaee6>3.0.0.Final</version.org.jboss.spec.jboss.javaee6> -->
     <version.org.jboss.errai>${errai.target.version}</version.org.jboss.errai>
     <version.com.google.gwt>2.4.0</version.com.google.gwt>
     <version.org.codehaus.mojo.gwt.maven.plugin>\${version.com.google.gwt}</version.org.codehaus.mojo.gwt.maven.plugin>
 #else
-    <version.org.jboss.spec.jboss.javaee6>2.0.0.Final</version.org.jboss.spec.jboss.javaee6>
+    <version.org.jboss.spec.jboss.javaee6>3.0.0.Final</version.org.jboss.spec.jboss.javaee6>
     <!-- Alternatively, comment out the above line, and un-comment the line 
       below to use version 3.0.0.Final-redhat-1 which is a release certified to 
       work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 maven 
