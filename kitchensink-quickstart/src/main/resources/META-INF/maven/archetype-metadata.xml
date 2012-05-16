@@ -55,5 +55,11 @@
         <include>README.md</include>
       </includes>
     </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>.settings/</directory>
+      <includes>
+        <include>**/.jsdtscope</include>
+      </includes>
+    </fileSet>    
   </fileSets>
 </archetype-descriptor>
