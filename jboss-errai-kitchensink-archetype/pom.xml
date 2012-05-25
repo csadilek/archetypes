@@ -9,9 +9,9 @@
     <version>2.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>kitchensink-quickstart</artifactId>
+  <artifactId>jboss-errai-kitchensink-archetype</artifactId>
   <packaging>maven-archetype</packaging>
-  <name>Errai Kitchek Sink Quickstart Archetype</name>
+  <name>Errai Kitchek Sink Webapp Archetype</name>
 
   <build>
     <extensions>
@@ -32,5 +32,5 @@
     </pluginManagement>
   </build>
 
-  <description>A starter Errai + Java EE 6 webapp project for use on JBoss AS 7 / EAP 6, generated from the kitchensink-quickstart archetype</description>
+  <description>A starter Errai + Java EE 6 webapp project for use on JBoss AS 7 / EAP 6, generated from the jboss-errai-kitchensink-archetype archetype</description>
 </project>
