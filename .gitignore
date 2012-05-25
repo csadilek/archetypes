@@ -5,3 +5,4 @@
 .settings/*
 !.settings/.jsdtscope
 */target/
+.settings
