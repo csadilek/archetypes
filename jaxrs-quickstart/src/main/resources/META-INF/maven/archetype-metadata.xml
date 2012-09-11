@@ -72,6 +72,12 @@
         <include>**/*.css</include>
       </includes>
     </fileSet>
+    <fileSet>
+      <directory>src/main/webapp/images</directory>
+      <includes>
+        <include>**/*.gif</include>
+      </includes>
+    </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory></directory>
       <includes>
