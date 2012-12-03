@@ -1212,7 +1212,7 @@
         <configuration>
           <logLevel>INFO</logLevel>
           <runTarget>App.html</runTarget>
-          <extraJvmArgs>-Xmx512m</extraJvmArgs>
+          <extraJvmArgs>-Xmx1000m -XX:MaxPermSize=500m</extraJvmArgs>
           <soyc>false</soyc>
           <hostedWebapp>src/main/webapp/</hostedWebapp>
           <server>org.jboss.errai.cdi.server.gwt.JettyLauncher</server>
