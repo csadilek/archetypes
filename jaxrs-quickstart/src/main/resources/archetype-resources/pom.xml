@@ -35,6 +35,7 @@
     <errai.version>${errai.target.version}</errai.version>
     <gwt.version>2.4.0</gwt.version>
     <gwt.maven.version>2.4.0</gwt.maven.version>
+    <slf4j.version>1.6.1</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -95,6 +96,19 @@
       <scope>provided</scope>
       <version>\${gwt.version}</version>
     </dependency>
+
+    <!--dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <scope>provided</scope>
+      <version>\${gwt.version}</version>
+    </dependency-->
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>\${slf4j.version}</version>
+    </dependency>
   </dependencies>
 
   <profiles>
@@ -144,14 +158,14 @@
         <dependency>
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-api</artifactId>
-          <version>1.6.1</version>
+          <version>\${slf4j.version}</version>
           <scope>provided</scope>
         </dependency>
 
         <dependency>
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-log4j12</artifactId>
-          <version>1.6.1</version>
+          <version>\${slf4j.version}</version>
           <scope>provided</scope>
         </dependency>
 
@@ -199,14 +213,14 @@
         <dependency>
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-api</artifactId>
-          <version>1.6.1</version>
+          <version>\${slf4j.version}</version>
           <scope>provided</scope>
         </dependency>
 
         <dependency>
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-log4j12</artifactId>
-          <version>1.6.1</version>
+          <version>\${slf4j.version}</version>
           <scope>provided</scope>
         </dependency>
 
