@@ -415,6 +415,7 @@
       <id>integration-test</id>
       <properties>
         <profile.testOutputDirectory>src/main/webapp/WEB-INF/classes</profile.testOutputDirectory>
+        <webDescriptor>jetty</webDescriptor>
       </properties>
 
       <build>

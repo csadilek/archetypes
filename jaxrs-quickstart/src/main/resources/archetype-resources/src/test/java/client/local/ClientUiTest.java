@@ -1,6 +1,8 @@
 package ${package}.client.local;
 
 import org.jboss.errai.enterprise.client.jaxrs.test.AbstractErraiJaxrsTest;
+import org.jboss.errai.ioc.client.Container;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -16,13 +18,9 @@ public class ClientUiTest extends AbstractErraiJaxrsTest {
   @Override
   protected void gwtSetUp() throws Exception {
     super.gwtSetUp();
-    setJaxRsApplicationRoot("/");
+    new Container().bootstrapContainer();
   }
-
-  public native void setJaxRsApplicationRoot(String path) /*-{
-    $wnd.erraiJaxRsApplicationRoot = path;
-  }-*/;
-
+  
   @Test
   public void testPopulateCustomersTable() {
     ErraiIocTestHelper.afterIocInitialized(new Runnable() {
