@@ -15,35 +15,26 @@ public class ClientUiTest extends AbstractErraiJaxrsTest {
     return "${package}.App";
   }
 
-  @Override
-  protected void gwtSetUp() throws Exception {
-    super.gwtSetUp();
-    new Container().bootstrapContainer();
-  }
-  
   @Test
   public void testPopulateCustomersTable() {
-    ErraiIocTestHelper.afterIocInitialized(new Runnable() {
+    final App client = ErraiIocTestHelper.instance.client;
+
+    new Timer() {
       @Override
       public void run() {
-        final App client = ErraiIocTestHelper.instance.client;
-        client.populateCustomersTable();
+        if (client.rows.isEmpty()) {
+          System.out.println("No data in the UI yet. Will check again later...");
+          schedule(500);
+          return;
+        }
 
-        new Timer() {
-          @Override
-          public void run() {
-            if (client.rows.isEmpty()) {
-              System.out.println("No data in the UI yet. Will check again later...");
-              schedule(500);
-            }
-
-            // Assertions go here!
-            assertEquals(3, client.rows.size());
-            finishTest();
-          }
-        }.schedule(500);
+        // Assertions go here!
+        assertEquals(3, client.rows.size());
+        finishTest();
       }
-    });
+    }.schedule(500);
+
+    // allow the above polling mechanism 20 seconds to complete
     delayTestFinish(20000);
   }
 }

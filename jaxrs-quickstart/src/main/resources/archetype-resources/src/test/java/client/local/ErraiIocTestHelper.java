@@ -43,22 +43,4 @@ public class ErraiIocTestHelper {
     System.out.println("ErraiIocTestHelper postconstruct");
   }
 
-  /**
-   * Runs the given runnable in the browser's JavaScript thread once the
-   * client-side Errai IoC container has finished its initialization phase
-   * (created all {@code @EntryPoint} instances and injected all fields marked
-   * with an <code>@Inject</code> annotation).
-   *
-   * @param runnable
-   *          The code to run once Errai IoC has finished bootstrapping in the
-   *          context of the web page.
-   */
-  public static void afterIocInitialized(final Runnable runnable) {
-    new Container().onModuleLoad();
-    
-    if (instance == null) {
-      System.out.println(" ****** Look out! Null instance!");
-    }
-    runnable.run();
-  }
 }
