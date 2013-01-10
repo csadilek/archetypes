@@ -30,6 +30,8 @@
         <gwt.maven.version>2.4.0</gwt.maven.version>
         <slf4j.version>1.6.1</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -372,13 +374,6 @@
                 </testResources>
                 <plugins>
                     <plugin>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>1.6</source>
-                            <target>1.6</target>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>2.5</version>
                         <configuration>
@@ -436,18 +431,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                    <optimize>true</optimize>
-                </configuration>
             </plugin>
 
             <plugin>
