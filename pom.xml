@@ -55,6 +55,7 @@
 		<module>cdi-quickstart</module>
 		<module>jaxrs-quickstart</module>
 		<module>jboss-errai-kitchensink-archetype</module>
+        <module>cordova-quickstart</module>
 	</modules>
 
 	<scm>
