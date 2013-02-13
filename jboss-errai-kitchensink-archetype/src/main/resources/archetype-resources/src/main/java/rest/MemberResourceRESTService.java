@@ -27,7 +27,6 @@ public class MemberResourceRESTService {
    @GET
    @Produces("text/xml")
    public List<Member> listAllMembers() {
-      @SuppressWarnings("unchecked")
       // We recommend centralizing inline queries such as this one into @NamedQuery annotations on
       // the @Entity class
       // as described in the named query blueprint:

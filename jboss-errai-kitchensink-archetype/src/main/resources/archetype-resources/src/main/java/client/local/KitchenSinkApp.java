@@ -8,43 +8,59 @@ import java.util.List;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import ${package}.client.shared.Member;
-import ${package}.client.shared.MemberService;
-import ${package}.client.shared.New;
 import org.jboss.errai.bus.client.api.ErrorCallback;
 import org.jboss.errai.bus.client.api.Message;
 import org.jboss.errai.bus.client.api.RemoteCallback;
 import org.jboss.errai.ioc.client.api.AfterInitialization;
 import org.jboss.errai.ioc.client.api.Caller;
 import org.jboss.errai.ioc.client.api.EntryPoint;
+import org.jboss.errai.ui.shared.api.annotations.DataField;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
+
+import ${package}.client.shared.Member;
+import ${package}.client.shared.MemberService;
+import ${package}.client.shared.New;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Entry point for the Errai Kitchen Sink application. The {@code @EntryPoint}
- * annotation indicates to the Errai framework that this class should be
+ * annotation tells the Errai framework that this class should be
  * instantiated inside the web browser when the web page is first loaded.
  *
  * @author Jonathan Fuerth <jfuerth@redhat.com>
  * @author Christian Sadilek <csadilek@redhat.com>
  */
-@EntryPoint
-public class KitchenSinkApp {
+@Templated @EntryPoint
+public class KitchenSinkApp extends Composite {
 
   /**
    * This is the client-side proxy to the Errai service implemented by
    * MemberServiceImpl. The proxy is generated at build time, and injected into
    * this field when the page loads. You can create additional Errai services by
    * following this same pattern; just be sure that the client-side class you
-   * inject the Caller into is an injectable class (client-side injectable
-   * classes are annotated with {@code @EntryPoint}, {@code @ApplicationScoped},
-   * or {@code @Singleton}).
+   * inject the Caller into is created by the client-side bean manager and not by
+   * {@code new MyType()}.
    */
-  @Inject
-  private Caller<MemberService> memberService;
+  @Inject private Caller<MemberService> memberService;
 
-  private KitchenSinkClient kitchenSinkUi;
+  /**
+   * A nested custom templated widget. Because this field is annotated with
+   * {@code @Inject} and {@code @DataField}, ErraiUI will create a new instance
+   * of MemberForm and replace the {@code <div data-field=memberForm>} element
+   * with that new MemberForm widget's UI.
+   */
+  @Inject private @DataField MemberForm memberForm;
+
+  /**
+   * A nested custom templated widget. Because this field is annotated with
+   * {@code @Inject} and {@code @DataField}, ErraiUI will create a new instance
+   * of MembersTable and replace the {@code <div data-field=membersTable>} element
+   * with that new MembersTable widget's UI.
+   */
+  @Inject private @DataField MembersTable membersTable;
 
   /**
    * Builds the UI and populates the member list by making an RPC call to the server.
@@ -59,21 +75,21 @@ public class KitchenSinkApp {
    */
   @AfterInitialization
   public void createUI() {
-    kitchenSinkUi = new KitchenSinkClient(memberService);
-    kitchenSinkUi.setTableStatusMessage("Fetching member list...");
-
-    RootPanel.get("kitchensink").add(kitchenSinkUi);
+    RootPanel.get("kitchensink").add(this);
+    membersTable.setTableStatusMessage("Fetching member list...");
     fetchMemberList();
   }
 
   /**
-   * Responds to the CDI event that's fired every time a new member is added to
-   * the database.
+   * Responds to the CDI event that's fired (from the server) every time a new
+   * member is added to the database. The new member could have been added by
+   * any user, including ourselves.
    *
-   * @param newMember The member that was just added to the database.
+   * @param newMember
+   *          The member that was just added to the database on the server.
    */
   public void onMemberAdded(@Observes @New Member newMember) {
-    kitchenSinkUi.addDisplayedMember(newMember);
+    membersTable.addMember(newMember);
   }
 
   /**
@@ -81,21 +97,22 @@ public class KitchenSinkApp {
    */
   private void fetchMemberList() {
 
-    // note that GWT.log messages only show up in development mode. They have no effect in production mode.
+    // note that GWT.log messages only show up in development mode.
+    // They have no effect (and no cost) in production mode.
     GWT.log("Requesting member list...");
 
     memberService.call(new RemoteCallback<List<Member>>() {
       @Override
       public void callback(List<Member> response) {
         GWT.log("Got member list. Size: " + response.size());
-        kitchenSinkUi.setDisplayedMembers(response);
+        membersTable.setMembers(response);
       }
     },
     new ErrorCallback() {
       @Override
       public boolean error(Message message, Throwable throwable) {
         throwable.printStackTrace();
-        kitchenSinkUi.setGeneralErrorMessage("Failed to retrieve list of members: " + throwable.getMessage());
+        memberForm.setGeneralErrorMessage("Failed to retrieve list of members: " + throwable.getMessage());
         return false;
       }
     }).retrieveAllMembersOrderedByName();

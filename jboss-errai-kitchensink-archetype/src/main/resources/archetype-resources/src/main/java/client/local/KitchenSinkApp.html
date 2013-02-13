@@ -1,0 +1,63 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<!DOCTYPE html>
+<div>
+  <h1>Welcome to JBoss AS 7!</h1>
+
+  <p>You have successfully deployed the Errai Kitchen Sink Java EE 6 web
+     application on JBoss AS 7.</p>
+
+  <h2>Register (Bean Validation example)</h2>
+  <p>Enforces annotation-based constraints defined on the model class.</p>
+
+  <!-- This div is the template root for the MemberForm class -->
+  <div data-field=memberForm>
+    <div data-field=generalErrorLabel></div>
+
+    <label for=name>Name:</label>
+    <input id=name type=text data-field=name>
+    <span data-field=nameValidationErr class=errorMessage></span>
+    <br>
+    <label for=email>Email:</label>
+    <input id=email type=text data-field=email>
+    <span data-field=emailValidationErr class=errorMessage></span>
+    <br>
+    <label for=phoneNumber>Phone:</label>
+    <input id=phoneNumber type=text data-field=phoneNumber>
+    <span data-field=phoneNumberValidationErr class=errorMessage></span>
+    <br>
+    <label for=registerButton></label>
+    <button id=registerButton data-field=registerButton>Register</button>
+    <span data-field=registerConfirmMessage class=errorMessage></span>
+  </div>
+
+  <br>
+  <br>
+
+  <!-- This div is the template root for the MembersTable class -->
+  <div data-field=membersTable>
+    <div class=headerRow>
+      <div class=name>Name</div>
+      <div class=email>Email Address</div>
+      <div class=phone>Phone</div>
+      <div class=restUrl>REST URL</div>
+    </div>
+    <div data-field=tableBody>
+      <div data-field=memberRow class=memberRow>
+        <div data-field=name class=name>Person's Full Name</div>
+        <div data-field=email class=email>email@host.com</div>
+        <div data-field=phone class=phone>123-456-7890</div>
+        <a data-field=restUrl class=restUrl href="rest/member/1" target="_blank">rest/member/1</a>
+      </div>
+    </div>
+    <span data-field=tableEmptyMessage class=tableStatus>Table status message</span>
+  </div>
+  <br>
+
+  <p>REST URL for all members: <a target=_blank href=rest/members>rest/members</a></p>
+
+  <p>Note: to see Errai broadcasting push notifications, open this page in another browser (a completely
+     different browser, not just a new window in the same browser). Every member you register will
+     appear in all browsers simultaneously.</p>
+</div>

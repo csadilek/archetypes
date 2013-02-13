@@ -39,13 +39,41 @@ span.invalid {
     color: red;
 }
 
-table.members, .bodyContent {
+label {
+	width: 8ex;
+	display: inline-block;
+}
+
+.membersTable, .bodyContent, .headerRow, .memberRow {
 	width: 600px !important;
 }
-table.members th {
-    padding-left: 2ex;
-    padding-right: 2ex;
+.headerRow {
+	font-weight: bold;
 }
+.memberRow {
+	border-bottom: 1px solid #ddd;
+}
+.name {
+	width: 25%;
+	overflow: hidden;
+	display: inline-block;
+}
+.email {
+	width: 34%;
+	overflow: hidden;
+	display: inline-block;
+}
+.phone {
+	width: 18%;
+	overflow: hidden;
+	display: inline-block;
+}
+.restUrl {
+	width: 20%;
+	overflow: hidden;
+	display: inline-block;
+}
+
 .emptyTableMessage {
 	font-size: larger;
 }

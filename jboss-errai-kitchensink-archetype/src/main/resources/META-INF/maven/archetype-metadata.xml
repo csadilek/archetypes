@@ -2,17 +2,18 @@
 <archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="jboss-as-kitchensink-errai"
     xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <requiredProperties>
-      <requiredProperty key="enterprise">
-        <defaultValue>false</defaultValue>
-      </requiredProperty> 
-   </requiredProperties>
-   <fileSets>
+  <requiredProperties>
+    <requiredProperty key="enterprise">
+      <defaultValue>false</defaultValue>
+    </requiredProperty> 
+  </requiredProperties>
+  <fileSets>
     <fileSet filtered="true" packaged="true" encoding="UTF-8">
       <directory>src/main/java</directory>
       <includes>
         <include>**/*.xml</include>
         <include>**/*.java</include>
+        <include>**/*.html</include>
       </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
@@ -56,7 +57,7 @@
       </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
-      <directory>.settings/</directory>
+      <directory>.settings</directory>
       <includes>
         <include>**/.jsdtscope</include>
       </includes>
