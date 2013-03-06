@@ -120,6 +120,12 @@
         <version>\${version.org.jboss.errai}</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.jboss.errai</groupId>
+        <artifactId>errai-ioc-bus-support</artifactId>
+        <version>\${version.org.jboss.errai}</version>
+      </dependency>
+
       <!-- Errai JAX-RS -->
       <dependency>
         <groupId>org.jboss.errai</groupId>
