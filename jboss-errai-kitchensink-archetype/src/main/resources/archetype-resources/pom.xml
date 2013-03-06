@@ -587,7 +587,7 @@
       <plugin>
         <groupId>org.jboss.as.plugins</groupId>
         <artifactId>jboss-as-maven-plugin</artifactId>
-        <version>7.1.0.Final</version>
+        <version>7.3.Final</version>
         <configuration>
           <filename>\${project.artifactId}.\${project.packaging}</filename>
         </configuration>
