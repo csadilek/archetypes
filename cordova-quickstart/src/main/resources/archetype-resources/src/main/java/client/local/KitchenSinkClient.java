@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.*;
 import com.googlecode.gwtphonegap.client.camera.Camera;
 import com.googlecode.gwtphonegap.client.camera.PictureCallback;
 import com.googlecode.gwtphonegap.client.camera.PictureOptions;
-import org.jboss.errai.bus.client.api.Message;
+import org.jboss.errai.bus.client.api.messaging.Message;
 import org.jboss.errai.bus.client.api.BusErrorCallback;
 import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.common.client.api.RemoteCallback;
