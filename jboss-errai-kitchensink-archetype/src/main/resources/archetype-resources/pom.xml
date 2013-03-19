@@ -27,14 +27,14 @@
 
     <version.org.jboss.bom>1.0.4.Final-redhat-wfk-1</version.org.jboss.bom>
     <!-- Alternatively, comment out the above lines, and un-comment the lines 
-      below to use version 3.0.2.Final which is based on community built dependencies. 
+      below to use version 1.0.5.CR2 which is based on community built dependencies. 
       You can actually use this stack with any version of JBoss AS that implements 
       the Java EE 6 web profile -->
-    <!-- <version.org.jboss.bom>1.0.4.Final</version.org.jboss.bom> -->
+    <!-- <version.org.jboss.bom>1.0.5.CR2</version.org.jboss.bom> -->
 #else
-    <version.org.jboss.bom>1.0.4.Final</version.org.jboss.bom>
+    <version.org.jboss.bom>1.0.5.CR2</version.org.jboss.bom>
     <!-- Alternatively, comment out the above lines, and un-comment the lines 
-      below to use version 3.0.2.Final-redhat-1 which is a release certified to 
+      below to use version 1.0.4.Final-redhat-wfk-1 which is a release certified to 
       work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 maven 
       repository. -->
     <!-- <version.org.jboss.bom>1.0.4.Final-redhat-wfk-1</version.org.jboss.bom> -->
