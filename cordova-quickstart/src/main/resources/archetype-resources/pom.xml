@@ -412,6 +412,20 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.jboss.errai</groupId>
+        <artifactId>cordova-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <id>build</id>
+            <phase>package</phase>
+            <goals>
+              <goal>build-project</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <!-- Compiler plugin enforces Java 1.6 compatibility and activates 
         annotation processors -->
       <plugin>
@@ -601,6 +615,15 @@
           </releases>
           <snapshots>
             <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+          <id>snapshots.jboss.org</id>
+          <name>JBoss Snapshot Repository</name>
+          <url>http://snapshots.jboss.org/maven2</url>
+          <layout>default</layout>
+          <snapshots>
+            <enabled>true</enabled>
           </snapshots>
         </pluginRepository>
       </pluginRepositories>
