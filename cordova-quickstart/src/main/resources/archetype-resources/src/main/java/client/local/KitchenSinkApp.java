@@ -6,8 +6,8 @@ package ${package}.client.local;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
-import org.jboss.errai.bus.client.api.Message;
-import org.jboss.errai.bus.client.api.RpcErrorCallback;
+import org.jboss.errai.bus.client.api.messaging.Message;
+import org.jboss.errai.bus.client.api.BusErrorCallback;
 import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.common.client.api.RemoteCallback;
 import ${package}.client.shared.Member;
@@ -92,7 +92,7 @@ public class KitchenSinkApp extends Composite {
         kitchenSinkUi.setDisplayedMembers(response);
       }
     },
-    new RpcErrorCallback() {
+    new BusErrorCallback() {
       @Override
       public boolean error(Message message, Throwable throwable) {
         throwable.printStackTrace();

@@ -11,6 +11,6 @@ import org.jboss.errai.bus.client.framework.Configuration;
 public class Config implements Configuration {
     @Override
     public String getRemoteLocation() {
-        return "http://localhost:8080/${artifactId}/";
+        return "${erraiServerUrl}/${artifactId}/";
     }
 }
