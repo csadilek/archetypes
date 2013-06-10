@@ -126,6 +126,12 @@
         <version>\${version.org.jboss.errai}</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.jboss.errai</groupId>
+        <artifactId>errai-jboss-as-support</artifactId>
+        <version>\${version.org.jboss.errai}</version>
+      </dependency>
+
       <!-- Errai JAX-RS -->
       <dependency>
         <groupId>org.jboss.errai</groupId>
@@ -478,7 +484,7 @@
       <plugin>
         <groupId>org.jboss.as.plugins</groupId>
         <artifactId>jboss-as-maven-plugin</artifactId>
-        <version>7.1.0.Final</version>
+        <version>7.3.Final</version>
         <configuration>
           <filename>\${project.artifactId}.\${project.packaging}</filename>
         </configuration>
