@@ -5,7 +5,7 @@
 
 	<groupId>org.jboss.errai.archetypes</groupId>
 	<artifactId>archetypes-parent</artifactId>
-	<version>2.3.2-SNAPSHOT</version>
+	<version>2.3.2.Final</version>
 	<packaging>pom</packaging>
 
 	<name>Errai Archetypes</name>
@@ -53,9 +53,7 @@
 	<modules>
 		<module>bus-quickstart</module>
 		<module>cdi-quickstart</module>
-		<module>jaxrs-quickstart</module>
-		<module>jboss-errai-kitchensink-archetype</module>
-        <module>cordova-quickstart</module>
+		<module>jaxrs-quickstart</module>		
 	</modules>
 
 	<scm>
